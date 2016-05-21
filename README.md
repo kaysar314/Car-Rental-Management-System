@@ -2,13 +2,15 @@
 
 ---
 
+<p align="center"><img src="/doc/img/logo.png" alt="CRMS"/></p>
+
 # Car Rental Management System
 
 This is a web app, a team course project in Sysu.
 
-## Infrastructure-LAMP
+## Infrastructure
 
-Linux, Apache, SQLite, and Python.
+LAMP: Linux, Apache, SQLite, and Python.
 
 Optional: Nginx
 
