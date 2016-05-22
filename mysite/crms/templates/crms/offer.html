@@ -1,11 +1,13 @@
 {% extends 'crms/base.html' %}
 {% block content %}
-{% if Offerlist %}
-<ul>
-    {% for offer in Offerlist %}
-    <li>{{ offer.car_name }} {{ offer.owner }} {{ offer.daily_rental }} {{ offer.time }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
+
+<h1>{{ offer.car.name }}</h1>
+
+<li>Owner: <a href="{% url 'crms:user' offer.car.owner.id %}">{{ offer.car.owner.username }}</a></li>
+<li>Rental: {{ offer.daily_rental }}</li>
+<li>Fetch date: {{ offer.fetch_date }}</li>
+<li>Return date: {{ offer.return_date }}</li>
+
+<a href="{{request.META.HTTP_REFERER}}">Go back</a>
 
 {% endblock %}

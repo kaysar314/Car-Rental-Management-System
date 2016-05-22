@@ -9,14 +9,14 @@ MODEL_CHOICES = {'大众': (('甲壳虫', '甲壳虫'), ('迈腾', '迈腾'), ('
                  '本田': (('雅阁', '雅阁'), ('飞度', '飞度'), ('凌派', '凌派')),
 }
 
-def get_brand_choices(brand):
-    return MODEL_CHOICES[brand]
+def get_model_choices():
+    return MODEL_CHOICES['丰田']
 
 class Car(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=50, null=True)
     brand = models.CharField(max_length=50, choices=BRAND_CHOICES, null=True)
-    model = models.CharField(max_length=50, choices=get_brand_choices(brand), null=True)
+    model = models.CharField(max_length=50, choices=get_model_choices(), null=True)
     manual = models.BooleanField()
     img = models.ImageField(null=True, blank=True)
 
@@ -27,10 +27,8 @@ class Car(models.Model):
         return self.owner.username + " " + self.name
 
 
-
-
 class Offer(models.Model):
-    car = models.ForeignKey(Car, on_delete=models.CASCADE, null=True)
+    car = models.OneToOneField(Car, on_delete=models.CASCADE, null=True)
     daily_rental = models.DecimalField(max_digits=5, decimal_places=2)
     fetch_date = models.DateTimeField('fetch date', null=True)
     return_date = models.DateTimeField('return date', null=True)
@@ -39,21 +37,19 @@ class Offer(models.Model):
         return '-'.join((self.car.name, str(self.daily_rental)))
 
 class Deal(models.Model):
-    offer = models.ForeignKey(Offer, on_delete=models.CASCADE, null=True, unique=True)
+    offer = models.ForeignKey(Offer, on_delete=models.CASCADE, null=True)
     tenant = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     fetch_date = models.DateTimeField('fetch date', null=True)
     return_date = models.DateTimeField('return date', null=True)
-
-    # def __str__(self):
-    #     return '-'.join((self.offer.owner.username, self.tenant.username, self.offer.car.name, self.fetch_date, self.return_date))
+    is_accept = models.BooleanField(default=False)
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    realname = models.CharField(max_length=20)
-    drive_license = models.ImageField(null=True)
-    social_identity = models.CharField(max_length=30)
-    phone = models.CharField(max_length=20)
-    location = models.CharField(max_length=20)
-    alipay = models.ImageField(null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True)
+    realname = models.CharField(max_length=20, blank=True)
+    drive_license = models.ImageField(null=True, blank=True)
+    social_identity = models.CharField(max_length=30, blank=True)
+    phone = models.CharField(max_length=20, blank=True)
+    location = models.CharField(max_length=20, blank=True)
+    alipay = models.ImageField(null=True, blank=True)
 
 

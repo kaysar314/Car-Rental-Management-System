@@ -1,9 +1,11 @@
-<body>
-    <div class="page-header">
-        <h1>CRMS Index Page</h1>
-    </div>
-    <div class="content container">
-        {% block content %}
-        {% endblock %}
-    </div>
-</body>
+{% extends 'crms/base.html' %}
+{% block content %}
+{% if Offerlist %}
+<ul>
+    {% for offer in Offerlist %}
+    <li><a href="{% url 'crms:offer' offer.id %}">{{ offer.car.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}
