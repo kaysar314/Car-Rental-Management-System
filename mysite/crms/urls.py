@@ -7,5 +7,5 @@ from . import views
 
 app_name = 'crms'
 urlpatterns = [
-    url(r'^$', views.DealView.as_view(), name='offer'),
+    url(r'^$', views.IndexView.as_view(), name='offer'),
 ]
