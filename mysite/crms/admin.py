@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 @admin.register(Car)
 class CarAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'owner')
+    list_display = ('id', 'name', 'owner', 'image')
 
 @admin.register(Offer)
 class OfferAdmin(admin.ModelAdmin):

@@ -9,27 +9,34 @@ MODEL_CHOICES = {'大众': (('甲壳虫', '甲壳虫'), ('迈腾', '迈腾'), ('
                  '本田': (('雅阁', '雅阁'), ('飞度', '飞度'), ('凌派', '凌派')),
 }
 
+GEAR_BOX_CHOICES = (('Manual', 'Manual'), ('Automatic', 'Automatic'))
+
 def get_model_choices():
     return MODEL_CHOICES['丰田']
+
+def get_free_car_choices():
+    pass
 
 class Car(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     name = models.CharField(max_length=50, null=True)
     brand = models.CharField(max_length=50, choices=BRAND_CHOICES, null=True)
     model = models.CharField(max_length=50, choices=get_model_choices(), null=True)
-    manual = models.BooleanField()
-    img = models.ImageField(null=True, blank=True)
-
-    displacement = models.DecimalField(max_digits=3, decimal_places=1)
+    gear_box = models.CharField(max_length=20, choices=GEAR_BOX_CHOICES, null=True)
+    image = models.ImageField(null=True, blank=True, upload_to='car')
+    displacement = models.DecimalField(max_digits=3, decimal_places=1, null=True)
     description = models.TextField(blank=True)
 
     def __str__(self):
         return self.owner.username + " " + self.name
 
 
+    def image_tag(self):
+        return u'<img src="%s" />' % self.image.url
+
 class Offer(models.Model):
     car = models.OneToOneField(Car, on_delete=models.CASCADE, null=True)
-    daily_rental = models.DecimalField(max_digits=5, decimal_places=2)
+    daily_rental = models.PositiveIntergerField()
     fetch_date = models.DateTimeField('fetch date', null=True)
     return_date = models.DateTimeField('return date', null=True)
 

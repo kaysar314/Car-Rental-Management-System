@@ -8,12 +8,13 @@
     {% if request.user.is_authenticated %}
     {{ user.username }} <br/>
     <a href="{% url 'logout' %}">logout</a>
+    <a href="{% url 'crms:register_car' %}">register-car</a>
     {% else %}
     Stranger
     <a href="{% url 'login' %}">login</a>
     <a href="{% url 'register' %}">register</a>
     {% endif %}
-
+    <a href="{% url 'crms:index' %}"">Home</a>
     <div class="content container">
         {% block content %}
         {% endblock %}

@@ -1,11 +1,11 @@
-{% extends 'crms/base.html' %}
+{% extends 'layout/base.html' %}
 {% block content %}
 
-<h1>{{ user.username }}</h1>
+<h1>{{ target_user.username }}</h1>
 
-<li>Email: {{ user.email }}</li>
-<li>Phone: {{ user.profile.phone }}</li>
-<li>Location: {{ user.profile.location }} </li>
+<li>Email: {{ target_user.email }}</li>
+<li>Phone: {{ target_user.profile.phone }}</li>
+<li>Location: {{ target_user.profile.location }} </li>
 <a href="{{request.META.HTTP_REFERER}}">Go back</a>
 
 {% endblock %}
