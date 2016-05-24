@@ -1,4 +1,5 @@
 from django import forms
+import datetime
 from .models import BRAND_CHOICES, GEAR_BOX_CHOICES, get_model_choices, Car, get_free_car_choices
 
 class RegisterCarForm(forms.Form):
@@ -76,15 +77,30 @@ class RegisterOfferForm(forms.Form):
         label=u'Car',
         choices=get_free_car_choices(),
     )
-    daily_rental = forms.PositiveIntegerField(
+    daily_rental = forms.IntegerField(
         label=u'Daily rental',
+        min_value = 0,
     )
     fetch_date = forms.DateTimeField(
         label=u'Fetch date',
+        initial=datetime.date.today,
     )
     return_date = forms.DateTimeField(
         label=u'Return date',
+        initial=datetime.date.today,
     )
 
+    def clean(self):
+        super(RegisterOfferForm, self).clean()
+        print("------Offer Register clean-------")
+
 class RegisterDealForm(forms.Form):
-    pass
+
+    fetch_date = forms.DateTimeField(
+        label=u'Fetch date',
+        initial=datetime.date.today,
+    )
+    return_date = forms.DateTimeField(
+        label=u'Return date',
+        initial=datetime.date.today,
+    )

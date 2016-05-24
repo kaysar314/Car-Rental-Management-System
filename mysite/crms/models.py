@@ -15,7 +15,7 @@ def get_model_choices():
     return MODEL_CHOICES['丰田']
 
 def get_free_car_choices():
-    pass
+    return (('A', 'A'), ('B', 'B'), ('C', 'C'))
 
 class Car(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
@@ -36,7 +36,7 @@ class Car(models.Model):
 
 class Offer(models.Model):
     car = models.OneToOneField(Car, on_delete=models.CASCADE, null=True)
-    daily_rental = models.PositiveIntergerField()
+    daily_rental = models.PositiveIntegerField()
     fetch_date = models.DateTimeField('fetch date', null=True)
     return_date = models.DateTimeField('return date', null=True)
 

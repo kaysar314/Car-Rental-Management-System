@@ -1,0 +1,19 @@
+<div class="panel">
+    <a href="{% url 'crms:index' %}"">Home</a>
+
+    {% if request.user.is_authenticated %}
+
+    <a href="{% url 'crms:register_car' %}">register-car</a>
+    <a href="{% url 'crms:register_offer' %}">register-offer</a>
+    <a href="{% url 'crms:register_deal' %}">register-deal</a>
+    <a href="{% url 'logout' %}">logout</a>
+
+{% else %}
+
+    <a href="{% url 'login' %}">login</a>
+    <a href="{% url 'register' %}">register</a>
+
+
+{% endif %}
+
+</div>

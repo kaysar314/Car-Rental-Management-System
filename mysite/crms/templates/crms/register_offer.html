@@ -1,0 +1,42 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="register-offer center-block">
+
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                Register offer
+            </h3>
+        </div>
+
+        <div class="panel-body">
+            <form action="{% url 'crms:register_offer' %}" method="post">{% csrf_token %}
+
+                {% for field in form %}
+
+                <div class="label">
+                    <label="">{{ field.label }}</label>
+                </div>
+
+                <div class="value">
+                    {{ field }}
+                </div>
+
+                {% if field.errors %}
+                <div class="error">
+                    {% for error in field.errors %}
+                    <strong>{{ error|escape }}</strong>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                {% endfor %}
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

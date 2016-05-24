@@ -9,21 +9,25 @@
 
         <div class="'panel-body'">
             <form action="{% url 'crms:register_car' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
-                {% for field in form %}
                 <div class="fieldWrapper">
+                    {% for field in form %}
+
                     <div class="label">
                         <label="">{{ field.label }}</label>
                     </div>
+
                     <div class="value">
-                    {{ field }}
+                        {{ field }}
                     </div>
-{% if form.errors %}
-                    {% for error in field.errors %}
-                    <strong>{{ error|escape }}</strong>
-                    {% endfor %}
-{% endif %}
+
+                    {% if form.errors %}
                     <div class="error">
+                        {% for error in field.errors %}
+                        <strong>{{ error|escape }}</strong>
+                        {% endfor %}
                     </div>
+                    {% endif %}
+
                 </div>
 
                 {% endfor %}
