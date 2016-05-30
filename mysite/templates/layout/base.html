@@ -1,11 +1,15 @@
 {% load staticfiles %}
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>C.R.M.S</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/crmsstyle.css' %}" />
+    </head>
     <body>
 
-
         <div class="panel">
-            <a href="{% url 'crms:index' %}"">Home</a>
+            <a href="{% url 'crms:index' %}">Home</a>
 
             {% if request.user.is_authenticated %}
 
@@ -24,22 +28,20 @@
 
         </div>
 
+        <header id="title">
+            <p>
+                Where come to CRMS, 
+                {% if request.user.is_authenticated %}
 
+                {{ user.username }}
 
+                {% else %}
 
-        <div class="page-header">
-            <h1>Where come to CRMS</h1>
-        </div>
+                Visitor
 
-        {% if request.user.is_authenticated %}
-
-        {{ user.username }}
-
-        {% else %}
-
-        Stranger
-
-        {% endif %}
+                {% endif %}
+            </p>
+        </header>
 
         <div class="content container">
             {% block content %}
