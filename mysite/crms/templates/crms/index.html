@@ -1,0 +1,23 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+{% if Offerlist %}
+<section class = "offerlist" >
+<p align="center">Offer list</p>
+<ul>
+    {% for offer in Offerlist %}
+    <li>
+    	<div style='float : left;'>
+    	<img width='123px' height='90px' src="static/images/{{offer.car.image}}">
+    	</div>
+    	<div>
+    	<h3>
+    	<a href="{% url 'crms:offer' offer.id %}">{{ offer.car.name }}</a>
+    	</h3>
+    	</div>
+    </li>
+    {% endfor %}
+</ul>
+</section>
+{% endif %}
+
+{% endblock %}
