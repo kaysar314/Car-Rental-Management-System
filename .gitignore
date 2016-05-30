@@ -1,2 +1,19 @@
+<<<<<<< HEAD
 *.pyc
 */__pycache__
+=======
+# django .gitignore
+*.egg-info
+*.pot
+*.py[co]
+__pycache__
+MANIFEST
+dist/
+docs/_build/
+docs/locale/
+node_modules/
+tests/coverage_html/
+tests/.coverage
+build/
+tests/report/
+>>>>>>> 6fd7232cfac1c370623ca76cb16a239d0c1c9dc6
