@@ -1,7 +1,26 @@
+{% load staticfiles %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/usercss.css' %}">
+{% endblock %}
 {% block content %}
-<div class="container">
+ <header id="title">
+            <p>
+                Where come to CRMS, 
+                {% if request.user.is_authenticated %}
 
-    <div class="register center-block">
+                {{ user.username }}
+
+                {% else %}
+
+                Visitor
+
+                {% endif %}
+            </p>
+        </header>
+<div class = "wrapper">
+
+<div class="container">
+    <div class="login center-block">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title"><strong>注册</strong></h3>
@@ -11,11 +30,10 @@
 
                     {% for field in form %}
                     <div class="fieldWrapper">
-                        <label for="">{{ field.label }}</label>
-
+                        <label >{{ field.label }}</label>
                         {{ field }}
                         {% if field.help_text %}
-                        <p class="text-muted">{{ field.help_text }}</p>
+                        <p class="text-muted" style="color:#bcbcbc">{{ field.help_text }}</p>
                         {% endif %}
                         {% if field.errors %}
                         <span class="text-danger pull-right">{{ field.errors }}</span>
@@ -23,7 +41,7 @@
                     </div>
                     {% endfor %}
 
-                    <button type="submit" class="btn btn-default">注 册</button>
+                    <button type="submit" value="login" />Register</button>
                 </form>
             </div>
             {% if form.non_field_errors %}
@@ -34,5 +52,6 @@
         </div>
         <a href="{{request.META.HTTP_REFERER}}">Go back</a>
     </div>
+</div>
 </div>
 {% endblock %}
