@@ -16,11 +16,11 @@ Optional: Nginx
 
 ## Framework
 
-Django1.9
+Django 1.96
 
 ## Tool
 
-Diagram: StarUML2.7
+Diagram: StarUML 2.7
 
 Document: Word/WPS
 
