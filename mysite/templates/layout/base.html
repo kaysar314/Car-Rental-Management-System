@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        {% block head %}
+        {% endblock %}
         <meta charset="UTF-8" />
         <title>C.R.M.S</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/crmsstyle.css' %}" />
@@ -27,7 +29,7 @@
             {% endif %}
 
         </div>
-
+        
         <header id="title">
             <p>
                 Where come to CRMS, 
