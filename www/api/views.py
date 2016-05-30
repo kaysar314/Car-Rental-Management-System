@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets
 from django.contrib.auth.models import User
 from api.serializers import *
+from crms.permissions import *
 from crms.models import *
 # Create your views here.
 
@@ -18,6 +19,8 @@ class ProfileViewSet(viewsets.ModelViewSet):
     """
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+                          IsOwnerOrReadOnly, )
 
 
 class CarViewSet(viewsets.ModelViewSet):
@@ -26,6 +29,8 @@ class CarViewSet(viewsets.ModelViewSet):
     """
     queryset = Car.objects.all()
     serializer_class = CarSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,
+                          IsOwnerOrReadOnly, )
 
 
 class OfferViewSet(viewsets.ModelViewSet):

@@ -51,7 +51,7 @@ class Deal(models.Model):
     is_accept = models.BooleanField(default=False)
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True)
+    owner = models.OneToOneField(User, on_delete=models.CASCADE, blank=True)
     realname = models.CharField(max_length=20, blank=True)
     drive_license = models.ImageField(null=True, blank=True)
     social_identity = models.CharField(max_length=30, blank=True)
@@ -60,5 +60,5 @@ class Profile(models.Model):
     alipay = models.ImageField(null=True, blank=True)
 
     def __str__(self):
-        return (self.user.username + "'s Profile")
+        return (self.owner.username + "'s Profile")
 
