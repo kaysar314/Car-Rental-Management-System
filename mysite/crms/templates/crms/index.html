@@ -3,6 +3,8 @@
 {% if Offerlist %}
 <section class = "panel-heading" >
 <p align="center">Which one is Your Favoriate</p>
+
+<div class="offerlist">
 <ul align="center">
     {% for offer in Offerlist %}
     <li>
@@ -17,6 +19,7 @@
     </li>
     {% endfor %}
 </ul>
+</div>
 </section>
 {% endif %}
 

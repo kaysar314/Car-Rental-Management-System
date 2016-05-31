@@ -12,17 +12,13 @@
 
         <div class="panel-body">
             <form action="{% url 'crms:register_offer' %}" method="post">{% csrf_token %}
-
                 {% for field in form %}
-
                 <div class="label">
                     <label>{{ field.label }}</label>
                 </div>
-
                 <div class="value">
                     {{ field }}
                 </div>
-
                 {% if field.errors %}
                 <div class="error">
                     {% for error in field.errors %}

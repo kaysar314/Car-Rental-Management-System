@@ -6,6 +6,7 @@ body {
 }
 
 .wrapper {
+  padding-top: 10px;
   /*display: flex;*/
   /*flex-direction: column;*/
   justify-content: center;
@@ -64,7 +65,7 @@ footer {
    font-size: 32px;
    color: #fff;
    margin-right: 30px;
-   margin-top: 20px;
+   margin-top: 10px;
 }
 
 .panel-heading{
@@ -139,7 +140,13 @@ label{
   color: #8E6F6F;
 }
 
-ul {
+h3{
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+  color: #8E6F6F;
+
+}
+
+.offerlist ul {
   width: 70%;
   margin-left: 15%;
   margin-right: 15%;
@@ -147,23 +154,29 @@ ul {
   list-style-type: none; 
 }
  
-h3 {
-  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
-
-}
- 
-li img {
+.offerlist li img {
   margin: 0 15px 0 0;
 }
  
-li {
+.offerlist li {
   width: 100%;
   margin-top: 10px;
   padding: 10px;
   overflow: auto;
 }
- 
-li:hover {
+
+.offerlist li:hover {
   background: #bbb;
   cursor: pointer;
+}
+.user li{
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+
+#rent {
+  font-size: 32px;
+  color: #fff;
+  margin-bottom: 10px; 
 }

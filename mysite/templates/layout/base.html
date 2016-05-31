@@ -12,17 +12,11 @@
         <div class="panel">
             <span>|</span>
             <a href="{% url 'crms:index' %}">Home</a>
-
             {% if request.user.is_authenticated %}
             <span>|</span>
-            <a href="{% url 'crms:register_car' %}">register-car</a>
-            <span>|</span>
-            <a href="{% url 'crms:register_offer' %}">register-offer</a>
-            <span>|</span>
-            <a href="{% url 'crms:register_deal' %}">register-deal</a>
+            <a href="{% url 'crms:user' user.id%}">Account</a>
             <span>|</span>
             <a href="{% url 'logout' %}">logout</a>
-
             {% else %}
             <span>|</span>
             <a href="{% url 'login' %}">login</a>
