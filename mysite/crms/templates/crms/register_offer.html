@@ -5,9 +5,9 @@
     <div class="register-offer center-block">
 
         <div class="panel-heading">
-            <h3 class="panel-title">
+            <p>
                 Register offer
-            </h3>
+            </p>
         </div>
 
         <div class="panel-body">
@@ -16,7 +16,7 @@
                 {% for field in form %}
 
                 <div class="label">
-                    <label="">{{ field.label }}</label>
+                    <label>{{ field.label }}</label>
                 </div>
 
                 <div class="value">
@@ -32,6 +32,8 @@
                 {% endif %}
 
                 {% endfor %}
+                <a href="{{request.META.HTTP_REFERER}}">Go back</a>
+                <button type="submit" class="btn btn-default">Register offer</button>
 
             </form>
         </div>

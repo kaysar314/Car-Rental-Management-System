@@ -9,25 +9,27 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/crmsstyle.css' %}" />
     </head>
     <body>
-
         <div class="panel">
+            <span>|</span>
             <a href="{% url 'crms:index' %}">Home</a>
 
             {% if request.user.is_authenticated %}
-
+            <span>|</span>
             <a href="{% url 'crms:register_car' %}">register-car</a>
+            <span>|</span>
             <a href="{% url 'crms:register_offer' %}">register-offer</a>
+            <span>|</span>
             <a href="{% url 'crms:register_deal' %}">register-deal</a>
+            <span>|</span>
             <a href="{% url 'logout' %}">logout</a>
 
             {% else %}
-
+            <span>|</span>
             <a href="{% url 'login' %}">login</a>
+            <span>|</span>
             <a href="{% url 'register' %}">register</a>
-
-
+            <span>|</span>
             {% endif %}
-
         </div>
         
         <header id="title">
@@ -44,11 +46,9 @@
                 {% endif %}
             </p>
         </header>
-
-        <div class="content container">
+        <div class="wrapper">
             {% block content %}
             {% endblock %}
         </div>
-
     </body>
 </html>

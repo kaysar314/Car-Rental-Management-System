@@ -1,13 +1,13 @@
 {% extends 'layout/base.html' %}
 {% block content %}
 {% if Offerlist %}
-<section class = "offerlist" >
-<p align="center">Offer list</p>
-<ul>
+<section class = "panel-heading" >
+<p align="center">Which one is Your Favoriate</p>
+<ul align="center">
     {% for offer in Offerlist %}
     <li>
     	<div style='float : left;'>
-    	<img width='123px' height='90px' src="static/images/{{offer.car.image}}">
+    	<img class='pics' width='123px' height='90px' src="static/images/{{offer.car.image}}">
     	</div>
     	<div>
     	<h3>
