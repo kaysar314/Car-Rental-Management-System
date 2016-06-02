@@ -1,0 +1,47 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="register_car center-block">
+        <div class="panel-heading">
+            <p >Register Car</p>
+        </div>
+        <div class="panel-body" >
+            <form action="{% url 'crms:register_car' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="fieldWrapper">
+                    
+                    <div class="label">
+                        <label >{{ field.label }}</label>
+                    </div>
+                    <div class="value">
+                        {{ field }}
+                    </div>
+
+                    {% if form.errors %}
+                    <div class="error">
+                        {% for error in field.errors %}
+                        <strong>{{ error|escape }}</strong>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                <a href="{{request.META.HTTP_REFERER}}">Go back</a>
+                <button type="submit" class="btn btn-default">Register Car</button>
+            </form>
+
+            <div >
+                {% if form.non_field_errors %}
+                <div class="messages">
+                    {{ form.non_fields_errors }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+{% endblock %}

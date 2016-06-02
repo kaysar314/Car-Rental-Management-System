@@ -1,0 +1,42 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+
+<div class="container">
+    <div class="register-deal center-block">
+
+        <div class="panel-heading">
+            <p>
+                Register Deal
+            </p>
+        </div>
+
+        <div class="panel-body">
+            <form action="{% url 'crms:register_deal' %}" method="post">{% csrf_token %}
+
+                {% for field in form %}
+
+                <div class="label">
+                    <label>{{ field.label }}</label>
+                </div>
+
+                <div class="value">
+                    {{ field }}
+                </div>
+
+                {% if field.errors %}
+                <div class="error">
+                    {% for error in field.errors %}
+                    <strong>{{ error|escape }}</strong>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {% endfor %}
+                <a href="{{request.META.HTTP_REFERER}}">Go back</a>
+                <button type="submit" class="btn btn-default">Register Deal</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

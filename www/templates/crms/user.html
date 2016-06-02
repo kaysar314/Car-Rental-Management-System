@@ -1,0 +1,19 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+<div class="panel">
+<a href="{% url 'crms:register_car' %}">register-car</a>
+<span>|</span>
+<a href="{% url 'crms:register_offer' %}">register-offer</a>
+<span>|</span>
+<a href="{% url 'crms:register_deal' %}">register-deal</a>
+</div>
+<div >
+<p class="panel-heading">{{ target_user.username }}</p>
+<div class="user">
+<li><h3>Email: {{ target_user.email }}</h3></li>
+<li><h3>Phone: {{ target_user.profile.phone }}</h3></li>
+<li><h3>Location: {{ target_user.profile.location }}</h3></li>
+<li><a href="{{request.META.HTTP_REFERER}}">Go back</a></li>
+</div>
+
+{% endblock %}
