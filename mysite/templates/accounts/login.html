@@ -1,4 +1,24 @@
+{% load staticfiles %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/usercss.css' %}">
+{% endblock %}
 {% block content %}
+ <header id="title">
+            <p>
+                Where come to CRMS, 
+                {% if request.user.is_authenticated %}
+
+                {{ user.username }}
+
+                {% else %}
+
+                Visitor
+
+                {% endif %}
+            </p>
+        </header>
+<div class = "wrapper">
+
 <div class="login center-block">
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -22,10 +42,9 @@
             </div>
             {% endif %}
         </div>
+        <a href="{{request.META.HTTP_REFERER}}">Go back</a>
     </div>
 </div>
-
-
-
+</div>
 
 {% endblock %}

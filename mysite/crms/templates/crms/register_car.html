@@ -4,18 +4,17 @@
 <div class="container">
     <div class="register_car center-block">
         <div class="panel-heading">
-            <h3 class="panel-title""><string>Register Car</string></h3>
+            <p >Register Car</p>
         </div>
-
-        <div class="'panel-body'">
-            <form action="{% url 'crms:register_car' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <div class="panel-body" >
+            <form action="{% url 'crms:register_car' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
                 <div class="fieldWrapper">
-                    {% for field in form %}
-
+                    
                     <div class="label">
-                        <label="">{{ field.label }}</label>
+                        <label >{{ field.label }}</label>
                     </div>
-
                     <div class="value">
                         {{ field }}
                     </div>
@@ -27,14 +26,13 @@
                         {% endfor %}
                     </div>
                     {% endif %}
-
                 </div>
-
                 {% endfor %}
+                <a href="{{request.META.HTTP_REFERER}}">Go back</a>
                 <button type="submit" class="btn btn-default">Register Car</button>
             </form>
 
-            <div>
+            <div >
                 {% if form.non_field_errors %}
                 <div class="messages">
                     {{ form.non_fields_errors }}
@@ -42,7 +40,7 @@
                 {% endif %}
             </div>
         </div>
-        <a href="{{request.META.HTTP_REFERER}}">Go back</a>
+        
     </div>
 </div>
 

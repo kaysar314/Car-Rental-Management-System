@@ -1,11 +1,26 @@
 {% extends 'layout/base.html' %}
 {% block content %}
 {% if Offerlist %}
-<ul>
+<section class = "panel-heading" >
+<p align="center">Which one is Your Favoriate</p>
+
+<div class="offerlist">
+<ul align="center">
     {% for offer in Offerlist %}
-    <li><a href="{% url 'crms:offer' offer.id %}">{{ offer.car.name }}</a></li>
+    <li>
+    	<div style='float : left;'>
+    	<img class='pics' width='123px' height='90px' src="static/images/{{offer.car.image}}">
+    	</div>
+    	<div>
+    	<h3>
+    	<a href="{% url 'crms:offer' offer.id %}">{{ offer.car.name }}</a>
+    	</h3>
+    	</div>
+    </li>
     {% endfor %}
 </ul>
+</div>
+</section>
 {% endif %}
 
 {% endblock %}
