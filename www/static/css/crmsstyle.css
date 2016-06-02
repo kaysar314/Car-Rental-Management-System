@@ -1,0 +1,99 @@
+body {
+   background-color: #E9E7EA;
+   margin: 0;
+   padding: 0;
+}
+
+a{
+   color: #8E6F6F;
+   text-decoration: none;
+}
+
+a:hover{
+   color: #A69494;
+}
+
+#pics {
+   text-align: center;
+   width: 20%;
+   height: 20%;
+   border: 2px solid rgb(223, 214, 214);
+   border-radius: 34px;
+   margin: 10px;
+   background-color: #66D9EF;
+}
+
+#title {
+   width: 100%;
+   font-size: 50px;
+   text-align: center;
+   background-color: #66D9EF;
+   border: 5px solid rgb(223, 214, 214);
+   margin-top: 20px;
+   color: #EEEEEE
+}
+
+footer {
+   text-align: center;
+   font-size: 25px;
+   color: #B09393;
+   position: fixed;
+   bottom: 0;
+   width: 100%;    
+}
+
+.panel{
+   text-align: right;
+   font-size: 32px;
+   color: #B09393;
+   margin-right: 30px;
+   margin-top: 20px;
+}
+
+.offerlist{
+   margin-top: 5%;
+   font-size: 42px;
+   color: #B09393;
+}
+
+.forms {
+   height: 20%;
+   text-align: center;
+   font-size:250%;
+   margin-top: 85px;
+}
+
+.forms .buttons{
+   margin:100px;
+   color: #A69494;
+   font-size: 60px;
+   padding: 58px;
+   width: 288px;
+   height: 68px
+}
+
+ul {
+  list-style-type: none; 
+}
+ 
+h3 {
+  font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+
+}
+ 
+li img {
+  margin: 0 15px 0 0;
+}
+ 
+li {
+  width: 35%;
+  margin-top: 10px;
+  margin-left: 30%;
+  padding: 10px;
+  overflow: auto;
+}
+ 
+li:hover {
+  background: #eee;
+  cursor: pointer;
+}

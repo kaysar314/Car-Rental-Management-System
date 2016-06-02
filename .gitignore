@@ -1,8 +1,9 @@
 # django .gitignore
+*.pyc
+*/__pycache__
 *.egg-info
 *.pot
 *.py[co]
-__pycache__
 MANIFEST
 dist/
 docs/_build/
@@ -12,3 +13,4 @@ tests/coverage_html/
 tests/.coverage
 build/
 tests/report/
+
