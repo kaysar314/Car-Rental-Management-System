@@ -1,3 +1,12 @@
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background: url("/static/images/carback.jpg") 50% fixed;
+  background-size: cover;
+}
+#span {
+  color: #EEEEEE;
+}
 .wrapper {
   display: flex;
   align-items: center;
@@ -5,15 +14,16 @@
   /*justify-content: center;*/
   width: 100%;
   min-height: 100%;
-  padding: 20px;
-  background: rgba(4, 40, 68, 0.85);
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 10px;
+  box-shadow: 0 0 .8823em 0;
 }
 #title {
    width: 100%;
    font-size: 50px;
    text-align: center;
-   background-color: #66D9EF;
-   border: 5px solid rgb(223, 214, 214);
+   /*background-color: #000;*/
+   /*border: 5px solid rgb(223, 214, 214);*/
    margin-top: 10px;
    color: #EEEEEE
 }
