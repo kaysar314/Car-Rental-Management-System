@@ -6,29 +6,31 @@ from crms.models import *
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ('url', 'username', 'email', 'profile')
-
+        fields = ('id', 'username', 'email', 'profile')
 
 class ProfileSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Profile
-        # fields = ('url', 'realname', 'drive_license', 'social_identity', 'phone', 'location', 'alipay')
-        fields = '__all__'
+        fields = ('id', 'realname', 'drive_license', 'social_identity', 'phone', 'location', 'alipay')
+        # fields = '__all__'
 
 class CarSerializer(serializers.HyperlinkedModelSerializer):
+    owner = UserSerializer(required=False)
+    image = serializers.ReadOnlyField(source='image.url')
     class Meta:
         model = Car
-        # fields = ('url', 'owner', 'name', 'brand', 'model', 'gear_box', 'image', 'displacement', 'description')
-        fields = '__all__'
+        fields = ('id', 'owner', 'name', 'brand', 'model', 'gear_box', 'image','displacement', 'description')
+        # fields = '__all__'
 
 class OfferSerializer(serializers.HyperlinkedModelSerializer):
+    car = CarSerializer(required=False)
     class Meta:
         model = Offer
-        # fields = ('url', 'car', 'daily_rental', 'fetch_date', 'return_date')
-        fields = '__all__'
+        fields = ('id', 'car', 'daily_rental', 'fetch_date', 'return_date')
+        # fields = '__all__'
 
 class DealSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Deal
-        # fields = ('url', 'offer', 'tenant', 'fetch_date','return_date', 'is_accept')
-        fields = '__all__'
+        fields = ('id', 'offer', 'tenant', 'fetch_date','return_date', 'is_accept')
+        # fields = '__all__'

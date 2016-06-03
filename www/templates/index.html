@@ -1,26 +1,49 @@
 {% extends 'layout/base.html' %}
-{% block content %}
-{% if Offerlist %}
-<section class = "panel-heading" >
-<p align="center">Which one is Your Favoriate</p>
 
+{% block ng_app %}crms.app.index{% endblock %}
+
+{% block content %}
+<!-- <div class="panel" ng-repeat="car in cars">
+    <div class="panel-heading clearfix">
+        {% verbatim %}
+        <h3 class="panel-title">{{ car.name }}</h3>
+        <img class='pics' width='123px' height='90px' ng-src="static/images/{{ car.image }}">
+        {% endverbatim %}
+    </div>
+</div> -->
+<div class="offerlist">
+    <ul align="center">
+    <li ng-repeat="car in cars">
+        {% verbatim %}
+        <div style='float : left;'>
+        <img class='pics' width='123px' height='90px' ng-src="static/images/{{ car.image }}">
+        </div>
+        <div>
+        <h3>
+        <a href="/offer">{{ car.name }}</a>
+        </h3>
+        </div>
+        {% endverbatim %}
+    </li>
+    </ul>
+</div>
+
+<!-- <section class = "panel-heading" >
+<p align="center">Which one is Your Favoriate</p>
 <div class="offerlist">
 <ul align="center">
-    {% for offer in Offerlist %}
     <li>
     	<div style='float : left;'>
-    	<img class='pics' width='123px' height='90px' src="static/images/{{offer.car.image}}">
+    	<img class='pics' width='123px' height='90px' src="static/images/">
     	</div>
     	<div>
     	<h3>
-    	<a href="{% url 'crms:offer' offer.id %}">{{ offer.car.name }}</a>
+    	<a href=""></a>
     	</h3>
     	</div>
     </li>
-    {% endfor %}
 </ul>
 </div>
-</section>
-{% endif %}
+</section> -->
 
 {% endblock %}

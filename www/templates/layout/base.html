@@ -8,34 +8,37 @@
         <title>C.R.M.S</title>
         <link rel="stylesheet" type="text/css" href="{% static 'css/crmsstyle.css' %}" />
     </head>
-    <body>
+    <body ng-app="{% block ng_app %}crms.app.static{% endblock %}">
         <div class="panel">
             <span>|</span>
-            <a href="">Home</a>
+            <a href="/">Home</a>
             <span>|</span>
             <a href="">Account</a>
             <span>|</span>
             <a href="">logout</a>
-
             <span>|</span>
             <a href="">login</a>
             <span>|</span>
             <a href="">register</a>
             <span>|</span>
-   
         </div>
-        
         <header id="title">
             <p>
                 Where come to CRMS, 
-
                 Visitor
-
             </p>
         </header>
         <div class="wrapper">
+            <div class="content ng-cloak" ng-controller="{% block ng_controller %}AppController{% endblock %}">
             {% block content %}
             {% endblock %}
+            </div>
         </div>
+    {% block js %}
+    <script src="{% static "underscore/underscore.js" %}"></script>
+    <script src="{% static "angular/angular.js" %}"></script>
+    <script src="{% static "angular-resource/angular-resource.js" %}"></script>
+    <script src="{% static "js/script.js" %}"></script>
+    {% endblock %}
     </body>
 </html>

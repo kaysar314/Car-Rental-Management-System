@@ -21,6 +21,11 @@ from django.views.generic import TemplateView
 from rest_framework import routers
 from api import views as api_views
 
+class CrmsStaticView(TemplateView):
+    def get_template_names(self):
+        return [self.kwargs.get('template_name') + ".html"]
+
+
 router = routers.DefaultRouter()
 router.register(r'users', api_views.UserViewSet)
 router.register(r'profiles', api_views.ProfileViewSet)
@@ -36,5 +41,6 @@ urlpatterns = [
     url(r'^logout/$', views.LogoutView, name='logout'),
     url(r'^login/$', views.LoginView.as_view(), name='login'),
     url(r'^$', TemplateView.as_view(template_name='index.html')),
+    url(r'^(?P<template_name>\w+)$', CrmsStaticView.as_view()),
 ]
 
