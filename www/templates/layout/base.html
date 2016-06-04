@@ -13,19 +13,30 @@
             <span>|</span>
             <a href="/">Home</a>
             <span>|</span>
+            {% if request.user.is_authenticated %}
             <a href="">Account</a>
             <span>|</span>
-            <a href="">logout</a>
+            <a href="{% url 'logout' %}">logout</a>
+            {% else %}
             <span>|</span>
-            <a href="">login</a>
+            <a href="{% url 'login' %}">login</a>
             <span>|</span>
-            <a href="">register</a>
+            <a href="{% url 'register' %}">register</a>
             <span>|</span>
+            {% endif %}
         </div>
         <header id="title">
             <p>
-                Where come to CRMS, 
+                Where come to CRMS,
+                {% if request.user.is_authenticated %}
+
+                {{ user.username }}
+
+                {% else %}
+
                 Visitor
+
+                {% endif %}
             </p>
         </header>
         <div class="wrapper">
