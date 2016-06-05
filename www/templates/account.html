@@ -1,0 +1,30 @@
+{% extends 'layout/base.html' %}
+
+{% block ng_app %}crms.app.account{% endblock %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+<div class="panel">      
+      <a href="">CAR-Register</a>
+      <span>|</span>
+      <a href="">OFFER-Register</a>
+      <span>|</span>
+      <a href="">My-Deal</a>
+      <input id='idd' style='display:none' value='{{user.id}}'>
+</div>
+
+<div ng-model='owner' align='center'>
+      {% verbatim %}
+      <div class="user" align='left'>
+      <h3>{{ owner.username }}</h3>
+      <h3>E-mail: {{ owner.email }}</h3>
+      <h3>Real name: {{ owner.profile.realname }}</h3>
+      <h3>Drive license: {{ owner.profile.drive_license }}</h3>
+      <h3>Phone: {{ owner.profile.phone }}</h3>
+      <h3>Location: {{ owner.profile.location }}</h3>
+      <h3>Alipay: {{ owner.profile.alipay }}</h3>
+      {% endverbatim %}
+</div>
+{% else %}
+{% endif %}
+{% endblock %}

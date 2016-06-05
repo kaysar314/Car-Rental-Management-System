@@ -1,15 +1,14 @@
 (function() {
   var app;
 
-  app = angular.module('crms.app.offer', []);
+  app = angular.module('crms.app.account', []);
 
   app.controller('AppController', [
-    '$scope', '$http', function($scope, $http) {
-      $scope.offers = [];
-      return $http.get('/api/offers').then(function(result) {
-        return angular.forEach(result.data, function(item) {
-          return $scope.cars.push(item);
-        });
+  '$scope', '$http', function($scope, $http) {
+    $scope.owner;
+    var url='/api/users/'+document.getElementById("idd").value;
+    $http.get(url).then(function(result) {
+        $scope.owner = result.data;
       });
     }
   ]);
@@ -23,13 +22,22 @@
 
   app.controller('AppController', [
     '$scope', '$http', function($scope, $http) {
-      $scope.cars = [];
-      return $http.get('/api/offers').then(function(result) {
+      $scope.offers = [];
+      $scope.offer;
+      $scope.user;
+      $http.get('/api/offers').then(function(result) {
         return angular.forEach(result.data, function(item) {
-          return $scope.cars.push(item["car"]);
+          return $scope.offers.push(item);
         });
       });
+      $scope.onSelect=function(offer){
+        $scope.offer = offer;
+        $scope.visible = !$scope.visible;
+        $scope.visibleuser = false;
+      }
+      $scope.onSelectuser=function(){
+        $scope.visibleuser = !$scope.visibleuser;
+      }
     }
-  ]);
-
+  ])
 }).call(this);

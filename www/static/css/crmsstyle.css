@@ -143,7 +143,6 @@ label{
 h3{
   font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
   color: #8E6F6F;
-
 }
 
 .offerlist ul {
@@ -159,20 +158,40 @@ h3{
 }
  
 .offerlist li {
-  width: 100%;
+
+  width: 90%;
+  height: 90%;
   margin-top: 10px;
   padding: 10px;
   overflow: auto;
 }
 
 .offerlist li:hover {
-  background: #bbb;
+  border: 2px solid rgb(223, 214, 214);
+  border-radius: 8px;
+/*  background: #bbb;*/
   cursor: pointer;
+}
+.user h2{
+  color: #fff;
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
 }
 .user li{
   width: 30%;
   margin-left: 35%;
   margin-right: 35%;
+}
+.user h3{
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+.user li h3{
+  width: 100%;
+  margin-left: 0%;
+  margin-right: 0%;
 }
 
 #rent {

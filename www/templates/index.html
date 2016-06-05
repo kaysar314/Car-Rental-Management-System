@@ -12,20 +12,40 @@
     </div>
 </div> -->
 <div class="offerlist">
-    <ul align="center">
-    <li ng-repeat="car in cars">
+    <div ng-model='offer' align='center' ng-show='visible' class='ng-hide'>
+        {% verbatim %}
+        <img class='pics' width='350px' ng-src="static/images/{{ offer.car.image }}">
+        <div class="user" align='left'>
+        <li ng-click="onSelect()"><h3>Go back</h3></li>
+        <h3>{{ offer.car.name }}</h3>
+    <li ng-click="onSelectuser()"><h3>Owner: {{ offer.car.owner.username }}</h3></li>
+    <div ng-show='visibleuser'>
+        <h2>E-mail: {{ offer.car.owner.email }}</h2>
+    </div>
+    <div class='offerl'>
+    <h3>Rental: {{ offer.daily_rental }}</h3>
+    <h3>Fetch date: {{ offer.fetch_date }}</h3>
+    <h3>Return date: {{ offer.return_date }}</h3>
+    </div>
+    <li id = "rent"><a href="">Rent it now!</a></li>
+</div>
+        {% endverbatim %}
+    </div>
+    <div align="center" ng-hide='visible'>
+    <h3>Which one do you like?</h3>
+    <ul>
+    <li ng-repeat="offer in offers" ng-click="onSelect(offer)">
         {% verbatim %}
         <div style='float : left;'>
-        <img class='pics' width='123px' height='90px' ng-src="static/images/{{ car.image }}">
+        <img class='pics' width='123px' height='90px' ng-src="static/images/{{ offer.car.image }}">
         </div>
         <div>
-        <h3>
-        <a href="/offer">{{ car.name }}</a>
-        </h3>
+        <h3>{{ offer.car.name }}</h3>
         </div>
         {% endverbatim %}
     </li>
     </ul>
+</div>
 </div>
 
 <!-- <section class = "panel-heading" >

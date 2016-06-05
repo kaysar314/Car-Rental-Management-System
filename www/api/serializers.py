@@ -2,20 +2,25 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from crms.models import *
 
-
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    class Meta:
-        model = User
-        fields = ('id', 'username', 'email', 'profile')
-
 class ProfileSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Profile
         fields = ('id', 'realname', 'drive_license', 'social_identity', 'phone', 'location', 'alipay')
         # fields = '__all__'
 
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    profile = ProfileSerializer(required=False)
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'email', 'profile')
+
+class User2Serializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id', 'username', 'email',)
+
 class CarSerializer(serializers.HyperlinkedModelSerializer):
-    owner = UserSerializer(required=False)
+    owner = User2Serializer(required=False)
     image = serializers.ReadOnlyField(source='image.url')
     class Meta:
         model = Car
