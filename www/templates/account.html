@@ -10,21 +10,35 @@
       <a href="">OFFER-Register</a>
       <span>|</span>
       <a href="">My-Deal</a>
-      <input id='idd' style='display:none' value='{{user.id}}'>
 </div>
 
 <div ng-model='owner' align='center'>
+      <button ng-click="editthis()">Edit</button>
       {% verbatim %}
       <div class="user" align='left'>
-      <h3>{{ owner.username }}</h3>
+      <h3>User name: {{ owner.username }}</h3>
       <h3>E-mail: {{ owner.email }}</h3>
-      <h3>Real name: {{ owner.profile.realname }}</h3>
-      <h3>Drive license: {{ owner.profile.drive_license }}</h3>
-      <h3>Phone: {{ owner.profile.phone }}</h3>
-      <h3>Location: {{ owner.profile.location }}</h3>
-      <h3>Alipay: {{ owner.profile.alipay }}</h3>
+      <h3>Real name: {{ owner.profile.realname }}<input ng-show='edit' type="text" ng-model="owner.profile.realname" placeholder="{{owner.profile.realname }}"></h3>
+      <h3>Drive license: {{ owner.profile.drive_license }}<input ng-show='edit' type="text" ng-model="owner.profile.drive_license" placeholder="{{ owner.profile.drive_license }}"></h3>
+      <h3>Phone: {{ owner.profile.phone }}<input ng-show='edit' type="text" ng-model="owner.profile.phone" placeholder="{{ owner.profile.phone }}"></h3>
+      <h3>Location: {{ owner.profile.location }}<input ng-show='edit' type="text" ng-model="owner.profile.location" placeholder="{{ owner.profile.location }}"></h3>
+      <h3>Alipay: {{ owner.profile.alipay }}<input ng-show='edit' type="text" ng-model="owner.profile.alipay" placeholder="{{ owner.profile.alipay }}"></h3>
+      </div>
+      <button ng-click="submit()" ng-show='edit'>Submit</button>
       {% endverbatim %}
 </div>
 {% else %}
+<h1>PLEASE LOG IN</h1>
 {% endif %}
+{% endblock %}
+
+{% block js %}
+{{ block.super }}
+<script>
+// Add the CSRF Token
+var app = angular.module('crms.app.account'); // Not including a list of dependent modules (2nd parameter to `module`) "re-opens" the module for additional configuration
+app.config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token|escapejs }}';
+}]);
+</script>
 {% endblock %}

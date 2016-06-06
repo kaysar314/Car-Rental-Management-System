@@ -18,11 +18,13 @@
             <a href="/account">Account</a>
             <span>|</span>
             <a href="{% url 'logout' %}">logout</a>
+            <input id='idd' style='display:none' value='{{user.id}}'>
             <span>|</span>
             {% else %}
             <a href="{% url 'login' %}">login</a>
             <span>|</span>
             <a href="{% url 'register' %}">register</a>
+            <input id='idd' style='display:none' value='nouser'>
             <span>|</span>
             {% endif %}
         </div>

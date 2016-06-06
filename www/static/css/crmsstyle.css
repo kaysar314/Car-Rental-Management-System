@@ -12,7 +12,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 1000px;
+  height: 1700px;
   background: rgba(0, 0, 0, 0.85);
   border-radius: 10px;
   box-shadow: 0 0 .8823em 0;
@@ -84,6 +84,7 @@ footer {
 
 
 form {
+  width: 50%;
   border-radius: 2px 2px 5px 5px;
   padding: 10px 20px 20px 20px;
   background: #ffffff;
@@ -96,7 +97,7 @@ form input {
   display: block;
   padding: 15px 10px;
   margin-bottom: 10px;
-  width: 30%;
+  width: 90%;
   border: 1px solid #ddd;
   transition: border-width 0.2s ease;
   border-radius: 2px;
@@ -104,7 +105,27 @@ form input {
   margin-top: 7px;
 }
 
+input {
+  padding: 15px 10px;
+  margin-bottom: 10px;
+  width: 90%;
+  border: 1px solid #ddd;
+  background:rgba(255, 255, 255, 0.8);; 
+  transition: border-width 0.2s ease;
+  border-radius: 2px;
+  color: #555;
+  margin-top: 7px;
+  font-size: 20px;
+}
+
 form input:focus {
+  outline: none;
+  color: #777;
+  border-color: #2196F3;
+  border-left-width: 35px;
+  font-size: 20px;
+}
+input:focus {
   outline: none;
   color: #444;
   border-color: #2196F3;
@@ -134,6 +155,19 @@ form button {
   transform: rotateZ(0deg);
   transition: all 0.1s ease-out;
   border-bottom-width: 7px;
+}
+button {
+  width: 28%;
+  height: 100%;
+  padding: 10px 10px;
+  background: #8E6F6F;
+  color: #fff;
+  margin-top: 20px;
+  left: 0;
+  bottom: 0;
+  max-height: 60px;
+  border: 0px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 2px 2px;
 }
 
 label{
@@ -188,6 +222,11 @@ h3{
   margin-left: 35%;
   margin-right: 35%;
 }
+.user h5{
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
+}
 .user li h3{
   width: 100%;
   margin-left: 0%;
@@ -198,4 +237,7 @@ h3{
   font-size: 32px;
   color: #fff;
   margin-bottom: 10px; 
+}
+.formcontrol{
+  width: 90%;
 }

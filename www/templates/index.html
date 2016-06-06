@@ -3,44 +3,57 @@
 {% block ng_app %}crms.app.index{% endblock %}
 
 {% block content %}
-<!-- <div class="panel" ng-repeat="car in cars">
-    <div class="panel-heading clearfix">
-        {% verbatim %}
-        <h3 class="panel-title">{{ car.name }}</h3>
-        <img class='pics' width='123px' height='90px' ng-src="static/images/{{ car.image }}">
-        {% endverbatim %}
-    </div>
-</div> -->
+
+
 <div class="offerlist">
-    <div ng-model='offer' align='center' ng-show='visible' class='ng-hide'>
+    <div>
+    <div ng-model='offer' align='center' ng-if='!visible'>
         {% verbatim %}
-        <img class='pics' width='350px' ng-src="static/images/{{ offer.car.image }}">
+        <img class='pics' width='350px' ng-src="static/images/{{ cars[offer.car].image }}">
         <div class="user" align='left'>
         <li ng-click="onSelect()"><h3>Go back</h3></li>
-        <h3>{{ offer.car.name }}</h3>
-    <li ng-click="onSelectuser()"><h3>Owner: {{ offer.car.owner.username }}</h3></li>
+        <h3>{{ cars[offer.car].name }}</h3>
+    <li ng-click="onSelectuser()"><h3>Owner: {{ cars[offer.car].owner.username }}</h3></li>
     <div ng-show='visibleuser'>
-        <h2>E-mail: {{ offer.car.owner.email }}</h2>
+        <h2>E-mail: {{ cars[offer.car].owner.email }}</h2>
     </div>
     <div class='offerl'>
     <h3>Rental: {{ offer.daily_rental }}</h3>
     <h3>Fetch date: {{ offer.fetch_date }}</h3>
     <h3>Return date: {{ offer.return_date }}</h3>
     </div>
-    <li id = "rent"><a href="">Rent it now!</a></li>
+
+    <div class='regdeal'>
+    <h3>Rent this car
+    <form style='width:100%' class="form-inline" ng-model='offer'>
+        <div class="form-group block-level">
+            <input type="date" class="form-control" ng-model="deal.fetch_date" placeholder="Fetch Date">
+        </div>
+        <div class="form-group">
+            <input type="date" class="form-control" ng-model="deal.return_date" placeholder="Return Date">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-default" ng-click="rent()">Rent it now!</button>
+        </div>
+        <h5 ng-repeat="(name, errs) in errors" class="alert alert-danger" ng-hide='error'><strong>{{ name }}</strong>: {{ errs.join(', ') }}</h5>
+        <h5 ng-repeat="(name, errs) in success" class="alert alert-danger" ng-show='error'><strong>{{ name }}</strong>: {{ errs.join(', ') }}</h5>
+    </form>
+    
+    </h3>
 </div>
-        {% endverbatim %}
-    </div>
-    <div align="center" ng-hide='visible'>
+</div>
+{% endverbatim %}
+</div>
+    <div align="center" ng-if='visible'>
     <h3>Which one do you like?</h3>
     <ul>
     <li ng-repeat="offer in offers" ng-click="onSelect(offer)">
         {% verbatim %}
         <div style='float : left;'>
-        <img class='pics' width='123px' height='90px' ng-src="static/images/{{ offer.car.image }}">
+        <img class='pics' width='123px' height='90px' ng-src="static/images/{{ cars[offer.car].image }}">
         </div>
         <div>
-        <h3>{{ offer.car.name }}</h3>
+        <h3>{{ cars[offer.car].name }}</h3>
         </div>
         {% endverbatim %}
     </li>
@@ -67,3 +80,14 @@
 </section> -->
 
 {% endblock %}
+{% block js %}
+{{ block.super }}
+<script>
+// Add the CSRF Token
+var app = angular.module('crms.app.index'); // Not including a list of dependent modules (2nd parameter to `module`) "re-opens" the module for additional configuration
+app.config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token|escapejs }}';
+}]);
+</script>
+{% endblock %}
+

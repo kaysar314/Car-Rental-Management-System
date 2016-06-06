@@ -9,7 +9,7 @@ class ProfileSerializer(serializers.HyperlinkedModelSerializer):
         # fields = '__all__'
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
-    profile = ProfileSerializer(required=False)
+    # profile = ProfileSerializer(required=False)
     class Meta:
         model = User
         fields = ('id', 'username', 'email', 'profile')
@@ -20,7 +20,7 @@ class User2Serializer(serializers.HyperlinkedModelSerializer):
         fields = ('id', 'username', 'email',)
 
 class CarSerializer(serializers.HyperlinkedModelSerializer):
-    owner = User2Serializer(required=False)
+    # owner = User2Serializer(required=False)
     image = serializers.ReadOnlyField(source='image.url')
     class Meta:
         model = Car
@@ -28,7 +28,7 @@ class CarSerializer(serializers.HyperlinkedModelSerializer):
         # fields = '__all__'
 
 class OfferSerializer(serializers.HyperlinkedModelSerializer):
-    car = CarSerializer(required=False)
+    # car = CarSerializer(required=False)
     class Meta:
         model = Offer
         fields = ('id', 'car', 'daily_rental', 'fetch_date', 'return_date')
