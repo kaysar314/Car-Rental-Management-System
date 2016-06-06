@@ -6,10 +6,13 @@
   app.controller('AppController', [
   '$scope', '$http', function($scope, $http) {
     $scope.owner;
+    $scope.own;
+    var ur = ''
     var host = 'http://'+window.location.host+'/api/';
     var url=host+'users/'+document.getElementById("idd").value;
     $http.get(url).then(function(result) {
       $scope.owner = result.data;
+      ur = result.data.profile;
       if($scope.owner.profile){
         $http.get($scope.owner.profile).then(function(result) {
           $scope.owner.profile = result.data;
@@ -21,7 +24,7 @@
     }
     $scope.submit=function(){
       $scope.owner.profile.owner = url;
-      $http({ method: 'PUT',url: '/api/profiles/',data: $scope.owner.profile,}).then(function successCallback(response){
+      $http({ method: 'PUT',url: ur,data: $scope.owner.profile,}).then(function successCallback(response){
         $scope.success = {'SUCCESS':'Edit Profile success.'};
           $scope.error = !$scope.error;
         }, function errorCallback(rejection){
